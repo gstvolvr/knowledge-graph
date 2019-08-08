@@ -1,0 +1,3 @@
+[graph]
+output_path = /gist/repo/local/path/filename
+notebooks_repo = /github/repo/local/path/dirctory
