@@ -26,7 +26,7 @@ def graph(dir_path, graph_path):
             if entry.is_file() and entry.name[0] != ".":
                 with open(entry.path, "r") as f:
                     text = f.read()
-                    matches = re.findall("\[([^\]]{5,30})\]\(([^)]+ipynb[^)]*)\)", text)
+                    matches = re.findall("\[([^\]]{4,30})\]\(([^)]+ipynb[^)]*)\)", text)
                     category = os.path.basename(parent_path)
 
                     res.append(",".join(["file", str(depth), clean_name(category), clean_path(entry.path), clean_name(entry.name), clean_path(entry.path)]) + "\n")
