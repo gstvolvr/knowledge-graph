@@ -23,7 +23,7 @@ def graph(dir_path, graph_path):
 
         for entry in os.scandir(parent_path):
 
-            if entry.is_file() and entry.name[0] != ".":
+            if entry.is_file() and entry.name[0] != "." and entry.name[-3:] != "png":
                 with open(entry.path, "r") as f:
                     text = f.read()
                     matches = re.findall("\[([^\]]{4,30})\]\(([^)]+ipynb[^)]*)\)", text)
@@ -37,7 +37,7 @@ def graph(dir_path, graph_path):
                         file_name = clean_name(other_path.split("/")[-1].split("#")[0])
 
                         res.append(",".join(["notebook", str(depth), clean_name(entry.name), clean_path(entry.path), clean_name(file_name), clean_path(other_path)]) + "\n")
-            elif entry.name[0] != ".":
+            elif entry.name[0] != "." and entry.name[-3:] != "png":
                 parent_path = os.path.abspath(os.path.join(entry, os.path.pardir))
                 parent_name = parent_path.split("/")[-1]
 
